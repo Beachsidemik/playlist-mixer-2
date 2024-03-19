@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Playlist Generator</title>
+    <!-- Paste the CSS code provided below -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            background-image: url('https://www.transparenttextures.com/patterns/bricks-cream.png');
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #1db954;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1ed760;
+        }
+
+        .artist-image {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+    <!-- End of CSS code -->
+</head>
+<body>
+    <div class="container">
+        <h1>Spotify Playlist Generator</h1>
+
+        <form action="/generatePlaylist" method="post">
+            <!-- Artist 1 -->
+            <div>
+                <label for="artist1">Artist 1:</label>
+                <input type="text" id="artist1" name="artist1" required>
+                <button type="button" onclick="displayArtistImage('artist1')">Display Image</button>
+                <div id="artist1Image"></div>
+            </div>
+
+            <!-- Artist 2 -->
+            <div>
+                <label for="artist2">Artist 2:</label>
+                <input type="text" id="artist2" name="artist2" required>
+                <button type="button" onclick="displayArtistImage('artist2')">Display Image</button>
+                <div id="artist2Image"></div>
+            </div>
+
+            <!-- Artist 3 -->
+            <div>
+                <label for="artist3">Artist 3:</label>
+                <input type="text" id="artist3" name="artist3" required>
+                <button type="button" onclick="displayArtistImage('artist3')">Display Image</button>
+                <div id="artist3Image"></div>
+            </div>
+
+            <!-- Button to verify and display artist images -->
+            <button type="button" onclick="verifyAndDisplayArtists()">Verify and Display Artists</button>
+
+            <!-- Add the "Generate Playlist" button -->
+            <button type="submit">Generate Playlist</button>
+        </form>
+
+        <p>Don't have an access token? <a href="/login">Log in with Spotify</a></p>
+    </div>
+
+    <script>
+        // Function to display artist image
+        function displayArtistImage(artistInputId) {
+            const artistInput = document.getElementById(artistInputId);
+            const artistName = artistInput.value;
+
+            // You need to implement logic to fetch the image of the artist from Spotify or another source
+            // For now, just displaying the artist's name
+            document.getElementById(artistInputId + 'Image').innerText = artistName;
+        }
+
+        // Function to verify and display artist images
+        function verifyAndDisplayArtists() {
+            const artist1Name = document.getElementById('artist1').value;
+            const artist2Name = document.getElementById('artist2').value;
+            const artist3Name = document.getElementById('artist3').value;
+
+            // You need to implement logic to verify if the entered artists exist in the Spotify database
+            // For now, just displaying a message indicating success
+            alert(`Artists ${artist1Name}, ${artist2Name}, and ${artist3Name} verified.`);
+            
+            // You can call displayArtistImage function here to display images of verified artists
+            // displayArtistImage('artist1');
+            // displayArtistImage('artist2');
+            // displayArtistImage('artist3');
+        }
+    </script>
+</body>
+</html>
